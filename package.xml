@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+    
+    <name>chargepal_description</name>
+    <version>0.0.0</version>
+    <description>
+        URDF model for the ChargePal robot.
+        This package was developed and tested in ROS noetic.
+    </description>
+
+    <maintainer email="johannes.brust@dfki.de">Johannes Brust</maintainer>
+
+    <license>BSD</license>
+
+    <author email="johannes.brust@dfki.de">Johannes Brust</author>
+
+    <!-- build dependencies -->
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <!-- run dependencies -->
+    <run_depend>joint_state_publisher</run_depend>
+    <run_depend>robot_state_publisher</run_depend>
+    <run_depend>ur_description</run_depend>
+
+    <!-- test dependencies -->
+    <test_depend>roslaunch</test_depend>
+
+</package>
