@@ -1,2 +1,0 @@
-# chargepal_description
-
