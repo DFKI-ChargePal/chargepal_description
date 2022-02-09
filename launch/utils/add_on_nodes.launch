@@ -2,6 +2,7 @@
 <launch>
 
     <!-- complementary file to help in testing URDF models, what is missing? upload of the URDF model -->
+    <arg name="rviz_config" default="robot" />
 
     <!-- send fake joint values from gui -->
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
@@ -10,6 +11,6 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
     <!-- visualize robot in Rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find chargepal_description)/config/robot.rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find chargepal_description)/config/$(arg rviz_config).rviz" />
 
 </launch>

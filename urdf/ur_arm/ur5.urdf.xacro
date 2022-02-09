@@ -4,7 +4,7 @@
   <!--ur5 without ros control-->
 
   <!-- resolve prefix variable (useful for multi robot) -->
-  <xacro:include filename="$(find chargepal_description)/urdf/prefix.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
 
   <!-- ################################################################### -->
   <!-- ur5 arm -->

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <arg name="namespace" default="robot" />
+  <arg name="robot" default="$(optenv ROBOT ur5_on_stand)" />
+  <arg name="tf_prefix" default="" />
+
+  <group ns="$(arg namespace)">  
+    <!-- upload robot urdf model to param server -->
+    <param name="tf_prefix"  value="$(arg tf_prefix)" />
+    <param name="robot_description" command="$(find xacro)/xacro '$(find chargepal_description)/urdf/bringups/$(arg robot).urdf.xacro'" />
+
+    <!-- run joint state publisher gui, robot state publisher and rviz -->
+    <include file="$(find chargepal_description)/launch/utils/add_on_nodes.launch" >
+      <arg name="rviz_config" value="$(arg namespace)" />
+    </include>
+  
+  </group>
+</launch>
