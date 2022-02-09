@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <launch>
-  <include file="$(find chargepal_description)/launch/test/robot.launch">
+  <include file="$(find chargepal_description)/launch/test/build_robot.launch">
     <arg name="namespace" value="BeeBee5" />
     <arg name="tf_prefix" value="bb5" />
     <arg name="robot" value="ur5_on_stand" />
   </include>
 
-  <include file="$(find chargepal_description)/launch/test/robot.launch">
+  <include file="$(find chargepal_description)/launch/test/build_robot.launch">
     <arg name="namespace" value="BeeBee10" />
     <arg name="tf_prefix" value="bb10" />
     <arg name="robot" value="ur10_on_stand" />
