@@ -1,8 +1,10 @@
-# ChargePal Robot Description Repository
+# ChargePal Robot and Scene Description Repository
 
 This repository contains the robot description models for the ChargePal project in the form of `urdf` and `xacro` files.
 
 The [`urdf`](./urdf) folder contains the `xacro` files describing the different robot models. In addition, the [`urdf/calibrated`](./urdf/calibrated) subfolder contains `xacro` scripts with which it is possible to use calibration and joint limit files from the [`config`](./config) directory.
+
+Further model files of the ChargePal scenario, not necessarily part of the robot, will be added to this repository when they become available.
 
 ## Dependency
 
