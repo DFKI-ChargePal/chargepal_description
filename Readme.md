@@ -38,7 +38,12 @@ export ROBOT=ur5_on_stand
 Start the environment:
 
 ```bash
-roslaunch chargepal_description test_robot_urdf.launch
+roslaunch chargepal_description build_robot.launch
+```
+
+To launch multiple robots execute:
+```bash
+roslaunch chargepal_description build_robots.launch
 ```
 
 *Don't forget to `source` your ROS and catkin workspace!*
