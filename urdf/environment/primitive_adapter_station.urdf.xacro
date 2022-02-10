@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="primitive_pillar">
+
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/common_properties.urdf.xacro" />
+
+  <!-- object properties -->
+  <xacro:property name="pillar_width" value="0.25" />
+  <xacro:property name="socket_size" value="0.07" />
+  <xacro:property name="socket_height" value="1.20" />
+  
+  <xacro:property name="panel_thickness" value="${0.5*(pillar_width-socket_size)}" />
+  
+  <!-- start kinematic chain -->
+  <link name="world" />  
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link="low_body_link" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${0.5*(socket_height-0.5*socket_size)}" />
+  </joint>
+  <link name="low_body_link">
+    <xacro:box_inertial_ x="${pillar_width}" y="${pillar_width}" z="${socket_height - 0.5*socket_size}" mass="50.0">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:box_inertial_>
+    <visual>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${pillar_width} ${pillar_width} ${socket_height - 0.5*socket_size}" />
+      </geometry>
+    </visual>
+    <collision>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${pillar_width} ${pillar_width} ${socket_height - 0.5*socket_size}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="left_panel_joint" type="fixed">
+    <parent link="low_body_link" />
+    <child link="left_panel_link" />
+    <origin rpy="0.0 0.0 0.0" xyz="${-0.25*(pillar_width+socket_size)} 0.0 ${0.5*socket_height + 0.25*socket_size}" />
+  </joint>
+  <link name="left_panel_link">
+    <xacro:box_inertial_ x="${panel_thickness}" y="${pillar_width}" z="${socket_size}" mass="5.0">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:box_inertial_>
+    <visual>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${panel_thickness} ${pillar_width} ${socket_size}" />
+      </geometry>
+    </visual>
+    <collision>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${panel_thickness} ${pillar_width} ${socket_size}" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="right_panel_joint" type="fixed">
+    <parent link="low_body_link" />
+    <child link="right_panel_link" />
+    <origin rpy="0.0 0.0 0.0" xyz="${0.25*(pillar_width+socket_size)} 0.0 ${0.5*socket_height + 0.25*socket_size}" />
+  </joint>
+  <link name="right_panel_link">
+    <xacro:box_inertial_ x="${panel_thickness}" y="${pillar_width}" z="${socket_size}" mass="5.0">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:box_inertial_>
+    <visual>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${panel_thickness} ${pillar_width} ${socket_size}" />
+      </geometry>
+    </visual>
+    <collision>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${panel_thickness} ${pillar_width} ${socket_size}" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="top_panel_joint" type="fixed">
+    <parent link="low_body_link"/>
+    <child link="top_panel_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${0.25*(2*socket_height + 2*socket_size + pillar_width)}"/>
+  </joint>
+  <link name="top_panel_link">
+    <xacro:box_inertial_ x="${pillar_width}" y="${pillar_width}" z="${panel_thickness}" mass="10.0">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:box_inertial_>
+    <visual>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${pillar_width} ${pillar_width} ${panel_thickness}" />
+      </geometry>
+    </visual>
+    <collision>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${pillar_width} ${pillar_width} ${panel_thickness}" />
+      </geometry>
+    </collision>
+  </link>
+  
+
+  <!-- colorize pillar -->
+  <gazebo reference="low_body_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo reference="left_panel_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo reference="right_panel_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  <gazebo reference="top_panel_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+</robot>

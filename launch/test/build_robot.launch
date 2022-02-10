@@ -2,7 +2,7 @@
 <launch>
   
   <arg name="namespace" default="robot" />
-  <arg name="robot" default="$(optenv ROBOT ur5_on_stand)" />
+  <arg name="robot" default="$(optenv ROBOT primitive_chargepal_with_gripper)" />
   <arg name="tf_prefix" default="" />
 
   <group ns="$(arg namespace)">  

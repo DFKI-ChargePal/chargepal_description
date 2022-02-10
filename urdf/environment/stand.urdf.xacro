@@ -10,9 +10,9 @@
   <!-- "arm base" : make box to elevate the robot arm -->
 
   <!-- fix arm base, so that it does not fall -->
-  <link name="${prefix}world"/>
+  <link name="world"/>
   <joint name="${prefix}world_to_robot" type="fixed">
-    <parent link="${prefix}world"/>
+    <parent link="world"/>
     <child link="${prefix}arm_base"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>

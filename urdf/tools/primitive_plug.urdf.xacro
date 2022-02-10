@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="primitive_plug_model">
+
+  <!-- resolve prefix variable (useful for multi robot) -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/common_properties.urdf.xacro" />
+
+  <xacro:property name="mass_handle" value="0.250" />
+  <xacro:property name="size_handle" value="0.08" />
+  <xacro:property name="length_handle" value="0.12" />
+
+  <xacro:property name="mass_plug" value="0.250" />
+  <xacro:property name="radius_plug" value="0.0345" />
+  <xacro:property name="length_plug" value="0.08" />
+
+  <link name="base_link" />
+
+  <joint name="base_link_to_handle" type="fixed">
+    <parent link="base_link"/>
+    <child link="handle"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${length_handle/2.0}"/>
+  </joint>
+
+  <link name="handle">
+    <xacro:box_inertial_ x="${size_handle}" y="${size_handle}" z="${length_handle}" mass="${mass_handle}">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:box_inertial_>
+    <visual>
+      <geometry>
+        <box size="${size_handle} ${size_handle} ${length_handle}" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="${size_handle} ${size_handle} ${length_handle}" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="handle_to_plug" type="fixed">
+    <parent link="handle"/>
+    <child link="plug"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${length_handle/2.0+length_plug/2.0}"/>
+  </joint>
+  
+  <link name="plug">
+    <xacro:cylinder_inertial_ radius="${radius_plug}" length="${length_plug}" mass="${mass_plug}">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:cylinder_inertial_>
+    <visual>
+      <geometry>
+        <cylinder radius="${radius_plug}" length="${length_plug}"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="${radius_plug}" length="${length_plug}"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="handle">
+    <material>Gazebo/ZincYellow</material>
+  </gazebo>
+  <gazebo reference="plug">
+    <material>Gazebo/ZincYellow</material>
+  </gazebo>
+
+</robot>
