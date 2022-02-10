@@ -6,7 +6,7 @@
       <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
         <arm>
           <arm_name>arm</arm_name>
-          <palm_link>${prefix}ur5_wrist_3_link</palm_link>
+          <palm_link>${prefix}wrist_3_link</palm_link>
 
           <!-- NOTE: the commented-out links have fixed joints with other
                links, so they are not present in the SDF any more. -->
