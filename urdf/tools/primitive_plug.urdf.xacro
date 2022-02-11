@@ -5,11 +5,11 @@
   <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
   <xacro:include filename="$(find chargepal_description)/urdf/utils/common_properties.urdf.xacro" />
 
-  <xacro:property name="mass_handle" value="0.250" />
+  <xacro:property name="mass_handle" value="0.25" />
   <xacro:property name="size_handle" value="0.08" />
   <xacro:property name="length_handle" value="0.12" />
 
-  <xacro:property name="mass_plug" value="0.250" />
+  <xacro:property name="mass_plug" value="0.5" />
   <xacro:property name="radius_plug" value="0.0345" />
   <xacro:property name="length_plug" value="0.08" />
 
