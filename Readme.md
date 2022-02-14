@@ -28,6 +28,7 @@ The environment is configured through defining the environment variable `ROBOT`.
 - `ur5_on_stand`: UR5 robot without tool mounted on a stand
 - `ur10_on_stand`: UR10 robot without tool mounted on a stand
 - `ur10e_on_stand`: UR10e robot without tool mounted on a stand
+- `primitive_chargepal_with_gripper`: Simplified ChargePal robot
 
 E.g., defining the environment variable to use the UR5:
 
