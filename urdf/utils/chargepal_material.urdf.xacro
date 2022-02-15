@@ -16,6 +16,12 @@
       <color rgba="${255/255} ${226/255} ${0/255} 1"/>
     </material>
   </xacro:property>
+
+  <xacro:property name="material_pink">
+    <material name="pink">
+      <color rgba="0.937 0.109 0.882 1"/>
+    </material>
+  </xacro:property>
   
   <xacro:property name="material_almost_white">
     <material name="almost_white">

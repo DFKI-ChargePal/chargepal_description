@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <!-- Various useful properties such as constants and materials -->
+<!-- TODO: change include paths in xacro files to chargepal_inertial and chargpal_material -->
+
 <robot name="xacro_properties" xmlns:xacro="http://ros.org/wiki/xacro">
   <!-- #################### RViz materials #################### -->
   <xacro:property name="material_white">
