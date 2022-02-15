@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="primitive_fix_plug_model">
+
+  <!-- Macros -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_material.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_inertial.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_common.urdf.xacro" />
+
+  <!-- resolve prefix variable (useful for multi robot) -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
+
+  <xacro:property name="mass_border" value="0.1" />
+  <xacro:property name="radius_border" value="0.045" />
+  <xacro:property name="length_border" value="0.03" />
+
+  <xacro:property name="mass_plug" value="0.25" />
+  <xacro:property name="radius_plug" value="0.0345" />
+  <xacro:property name="length_plug" value="0.08" />
+
+
+  <xacro:macro name="fix_plug" params="parent prefix">
+
+    <joint name="${prefix}plug_border_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${prefix}plug_border"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${length_border/2.0}"/>
+    </joint>
+
+    <link name="${prefix}plug_border">
+      <xacro:inertial_cylinder radius="${radius_border}" length="${length_border}" mass="${mass_border}">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </xacro:inertial_cylinder>
+      <visual>
+        <xacro:insert_block name="material_pink" />
+        <geometry>
+          <cylinder radius="${radius_border}" length="${length_border}"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="${radius_border}" length="${length_border}"/>
+        </geometry>
+      </collision>
+    </link>
+    
+    <joint name="${prefix}plug_joint" type="fixed">
+      <parent link="${prefix}plug_border"/>
+      <child link="${prefix}plug"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${length_border/2.0+length_plug/2.0}"/>
+    </joint>
+    
+    <link name="${prefix}plug">
+      <xacro:inertial_cylinder radius="${radius_plug}" length="${length_plug}" mass="${mass_plug}">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+      </xacro:inertial_cylinder>
+      <visual>
+        <xacro:insert_block name="material_pink" />
+        <geometry>
+          <cylinder radius="${radius_plug}" length="${length_plug}"/>
+        </geometry>
+      </visual>
+      <collision>
+        <geometry>
+          <cylinder radius="${radius_plug}" length="${length_plug}"/>
+        </geometry>
+      </collision>
+    </link>
+    
+    <!-- virtual reference frame -->
+    <xacro:chargepal_virtual_joint 
+      joint_name="${prefix}plug_ref_frame_joint" 
+      type="fixed"
+      parent="${prefix}plug_border"
+      child="${prefix}plug_reference_frame"
+      joint_axis_xyz="0 0 0"
+      joint_origin_xyz="0 0 ${length_border/2.0}"
+      joint_origin_rpy="0 0 0"
+      joint_lower_limit="0"
+      joint_upper_limit="0"
+    />
+    <xacro:chargepal_virtual_link link_name="${prefix}plug_reference_frame" />
+
+    <gazebo reference="handle">
+      <material>Gazebo/ZincYellow</material>
+    </gazebo>
+    <gazebo reference="plug">
+      <material>Gazebo/ZincYellow</material>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>
