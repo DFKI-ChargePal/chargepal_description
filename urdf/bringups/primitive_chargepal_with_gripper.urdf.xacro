@@ -80,7 +80,7 @@
   <xacro:include filename="$(find chargepal_description)/urdf/robotiq_ft_300/robotiq_ft_300.urdf.xacro" />
   
   <xacro:robotiq_ft_300 parent="${prefix}tool0" prefix="${prefix}">
-    <pose xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:robotiq_ft_300>
 
   

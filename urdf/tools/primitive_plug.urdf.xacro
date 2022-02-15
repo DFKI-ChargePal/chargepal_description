@@ -1,9 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="primitive_plug_model">
 
+  <!-- Macros -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_material.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_inertial.urdf.xacro" />
+
   <!-- resolve prefix variable (useful for multi robot) -->
   <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
-  <xacro:include filename="$(find chargepal_description)/urdf/utils/common_properties.urdf.xacro" />
 
   <xacro:property name="mass_handle" value="0.25" />
   <xacro:property name="size_handle" value="0.08" />
@@ -22,10 +25,11 @@
   </joint>
 
   <link name="handle">
-    <xacro:box_inertial_ x="${size_handle}" y="${size_handle}" z="${length_handle}" mass="${mass_handle}">
+    <xacro:inertial_box x="${size_handle}" y="${size_handle}" z="${length_handle}" mass="${mass_handle}">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:box_inertial_>
+    </xacro:inertial_box>
     <visual>
+      <xacro:insert_block name="material_pink" />
       <geometry>
         <box size="${size_handle} ${size_handle} ${length_handle}" />
       </geometry>
@@ -44,10 +48,11 @@
   </joint>
   
   <link name="plug">
-    <xacro:cylinder_inertial_ radius="${radius_plug}" length="${length_plug}" mass="${mass_plug}">
+    <xacro:inertial_cylinder radius="${radius_plug}" length="${length_plug}" mass="${mass_plug}">
       <origin xyz="0 0 0" rpy="0 0 0"/>
-    </xacro:cylinder_inertial_>
+    </xacro:inertial_cylinder>
     <visual>
+      <xacro:insert_block name="material_pink" />
       <geometry>
         <cylinder radius="${radius_plug}" length="${length_plug}"/>
       </geometry>
