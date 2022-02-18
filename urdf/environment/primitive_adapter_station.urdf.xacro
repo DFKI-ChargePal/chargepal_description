@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="primitive_adapter_station">
 
-  <xacro:include filename="$(find chargepal_description)/urdf/utils/common_properties.urdf.xacro" />
+  <!-- Macros -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_material.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_inertial.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_common.urdf.xacro" />
 
   <!-- object properties -->
   <xacro:property name="station_width" value="0.25" />
@@ -18,10 +21,11 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${0.5*(socket_height-0.5*socket_size)}" />
   </joint>
   <link name="low_body_link">
-    <xacro:box_inertial_ x="${station_width}" y="${station_width}" z="${socket_height - 0.5*socket_size}" mass="50.0">
+    <xacro:inertial_box x="${station_width}" y="${station_width}" z="${socket_height - 0.5*socket_size}" mass="50.0">
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:box_inertial_>
+    </xacro:inertial_box>
     <visual>
+      <xacro:insert_block name="material_grey" />
       <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
         <box size="${station_width} ${station_width} ${socket_height - 0.5*socket_size}" />
@@ -41,10 +45,11 @@
     <origin rpy="0.0 0.0 0.0" xyz="${-0.25*(station_width+socket_size)} 0.0 ${0.5*socket_height + 0.25*socket_size}" />
   </joint>
   <link name="left_panel_link">
-    <xacro:box_inertial_ x="${panel_thickness}" y="${station_width}" z="${socket_size}" mass="5.0">
+    <xacro:inertial_box x="${panel_thickness}" y="${station_width}" z="${socket_size}" mass="5.0">
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:box_inertial_>
+    </xacro:inertial_box>
     <visual>
+      <xacro:insert_block name="material_grey" />
       <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
         <box size="${panel_thickness} ${station_width} ${socket_size}" />
@@ -64,10 +69,11 @@
     <origin rpy="0.0 0.0 0.0" xyz="${0.25*(station_width+socket_size)} 0.0 ${0.5*socket_height + 0.25*socket_size}" />
   </joint>
   <link name="right_panel_link">
-    <xacro:box_inertial_ x="${panel_thickness}" y="${station_width}" z="${socket_size}" mass="5.0">
+    <xacro:inertial_box x="${panel_thickness}" y="${station_width}" z="${socket_size}" mass="5.0">
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:box_inertial_>
+    </xacro:inertial_box>
     <visual>
+      <xacro:insert_block name="material_grey" />
       <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
         <box size="${panel_thickness} ${station_width} ${socket_size}" />
@@ -87,10 +93,11 @@
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${0.25*(2*socket_height + 2*socket_size + station_width)}"/>
   </joint>
   <link name="top_panel_link">
-    <xacro:box_inertial_ x="${station_width}" y="${station_width}" z="${panel_thickness}" mass="10.0">
+    <xacro:inertial_box x="${station_width}" y="${station_width}" z="${panel_thickness}" mass="10.0">
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:box_inertial_>
+    </xacro:inertial_box>
     <visual>
+      <xacro:insert_block name="material_grey" />
       <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
         <box size="${station_width} ${station_width} ${panel_thickness}" />
@@ -104,6 +111,61 @@
     </collision>
   </link>
   
+  <!-- ########## TARGET ############ -->
+  <!-- virtual target reference frame -->
+  <xacro:chargepal_virtual_joint 
+    joint_name="target_ref_frame_joint" 
+    type="fixed"
+    parent="world"
+    child="target_reference_frame"
+    joint_axis_xyz="0 0 0"
+    joint_origin_xyz="0 ${-station_width/2} ${socket_height}"
+    joint_origin_rpy="${pi/2} 0 ${pi}"
+    joint_lower_limit="0"
+    joint_upper_limit="0"
+  />
+  <xacro:chargepal_virtual_link link_name="target_reference_frame" />
+
+  <!-- Add three (for each axis) additional virtual frames for reward calculation -->
+  <xacro:chargepal_virtual_joint
+    joint_name="virt_tgt_frame_x_joint" 
+    type="fixed"
+    parent="target_reference_frame"
+    child="virt_tgt_frame_x"
+    joint_axis_xyz="0 0 0"
+    joint_origin_xyz="1 0 0"
+    joint_origin_rpy="0 0 0"
+    joint_lower_limit="0"
+    joint_upper_limit="0"
+  />
+  <xacro:chargepal_virtual_link link_name="virt_tgt_frame_x" />
+
+  <xacro:chargepal_virtual_joint
+    joint_name="virt_tgt_frame_y_joint" 
+    type="fixed"
+    parent="target_reference_frame"
+    child="virt_tgt_frame_y"
+    joint_axis_xyz="0 0 0"
+    joint_origin_xyz="0 1 0"
+    joint_origin_rpy="0 0 0"
+    joint_lower_limit="0"
+    joint_upper_limit="0"
+  />
+  <xacro:chargepal_virtual_link link_name="virt_tgt_frame_y" />
+
+  <xacro:chargepal_virtual_joint
+    joint_name="virt_tgt_frame_z_joint" 
+    type="fixed"
+    parent="target_reference_frame"
+    child="virt_tgt_frame_z"
+    joint_axis_xyz="0 0 0"
+    joint_origin_xyz="0 0 1"
+    joint_origin_rpy="0 0 0"
+    joint_lower_limit="0"
+    joint_upper_limit="0"
+  />
+  <xacro:chargepal_virtual_link link_name="virt_tgt_frame_z" />
+
 
   <!-- colorize adapter station -->
   <gazebo reference="low_body_link">
