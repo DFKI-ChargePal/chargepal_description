@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="primitive_chargepal_with_gripper">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="primitive_chargepal_with_fix_plug">
 
   <!-- Macros -->
   <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_common.urdf.xacro" />
