@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <arg name="namespace" default="environment" />
+  <arg name="env" default="$(optenv ENV stand)" />
+  <arg name="rviz_config" default="env" />
+  <arg name="tf_prefix" default="" />
+
+  <group ns="$(arg namespace)">  
+    <!-- upload robot urdf model to param server -->
+    <param name="tf_prefix"  value="$(arg tf_prefix)" />
+    <param name="robot_description" command="$(find xacro)/xacro '$(find chargepal_description)/urdf/environment/$(arg env).urdf.xacro'" />
+
+    <!-- generate tf data from urdf model and joint states -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <!-- visualize robot in Rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find chargepal_description)/config/$(arg rviz_config).rviz" />
+  </group>
+
+</launch>
