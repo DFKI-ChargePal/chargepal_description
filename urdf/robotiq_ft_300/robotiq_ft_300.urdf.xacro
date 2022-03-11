@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="robotiq_ft_300">
 
+  <!-- Macros -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_common.urdf.xacro" />
+
   <xacro:macro name="robotiq_ft_300" params="parent prefix *origin">
 
     <!-- mount the fts to the robot -->
@@ -45,7 +48,8 @@
       <parent link="${prefix}fts_robotside" />
       <child link="${prefix}robotiq_force_torque_frame_id" />
     </joint>
-    <link name="${prefix}robotiq_force_torque_frame_id"/>
+    <!-- <link name="${prefix}robotiq_force_torque_frame_id"/> -->
+    <xacro:chargepal_virtual_link link_name="${prefix}robotiq_force_torque_frame_id" />
 
     <!-- toolside frame -->
     <joint name="${prefix}toolside_joint" type="fixed" >
@@ -53,7 +57,8 @@
       <parent link="${prefix}fts_robotside" />
       <child link="${prefix}fts_toolside" />
     </joint>
-    <link name="${prefix}fts_toolside"/>
+    <!-- <link name="${prefix}fts_toolside"/> -->
+    <xacro:chargepal_virtual_link link_name="${prefix}fts_toolside" />
 
   </xacro:macro>
 </robot>

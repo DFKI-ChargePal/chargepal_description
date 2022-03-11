@@ -8,7 +8,13 @@
   <!-- ////////// ChargePal common macros ////////// -->
   <!--                                               -->
   <!-- start kinematic chain -->
-  <link name="world"/>
+  <link name="world">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <joint name="world_joint" type="fixed">
     <parent link="world"/>
     <child link="mobile_base_link"/>
@@ -480,6 +486,9 @@
   <gazebo reference="ee_link">
     <selfCollide>true</selfCollide>
   </gazebo>
+  <!--                                               -->
+  <!-- ////////// ChargePal common macros ////////// -->
+  <!--                                               -->
   <!-- mount the fts to the robot -->
   <joint name="fts_fix" type="fixed">
     <!--In most cases origin would be flange adapter plate: <origin xyz="0 0 0.009" rpy="0 0 0"/> /-->
@@ -519,14 +528,26 @@
     <parent link="fts_robotside"/>
     <child link="robotiq_force_torque_frame_id"/>
   </joint>
-  <link name="robotiq_force_torque_frame_id"/>
+  <link name="robotiq_force_torque_frame_id">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <!-- toolside frame -->
   <joint name="toolside_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.0375"/>
     <parent link="fts_robotside"/>
     <child link="fts_toolside"/>
   </joint>
-  <link name="fts_toolside"/>
+  <link name="fts_toolside">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <!-- /////////////////// RViz materials /////////////////// -->
   <!--                                                        -->
   <!-- ///////////////////////////// inertials with origin //////////////////////////////// -->
@@ -592,7 +613,13 @@
     <axis xyz="0 0 0"/>
     <origin rpy="0 0 0" xyz="0 0 0.015"/>
   </joint>
-  <link name="plug_reference_frame"/>
+  <link name="plug_reference_frame">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <gazebo reference="handle">
     <material>Gazebo/ZincYellow</material>
   </gazebo>
@@ -605,21 +632,39 @@
     <axis xyz="0 0 0"/>
     <origin rpy="0 0 0" xyz="1 0 0"/>
   </joint>
-  <link name="virt_tool_frame_x"/>
+  <link name="virt_tool_frame_x">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <joint name="virt_tool_frame_y_joint" type="fixed">
     <parent link="plug_reference_frame"/>
     <child link="virt_tool_frame_y"/>
     <axis xyz="0 0 0"/>
     <origin rpy="0 0 0" xyz="0 1 0"/>
   </joint>
-  <link name="virt_tool_frame_y"/>
+  <link name="virt_tool_frame_y">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <joint name="virt_tool_frame_z_joint" type="fixed">
     <parent link="plug_reference_frame"/>
     <child link="virt_tool_frame_z"/>
     <axis xyz="0 0 0"/>
     <origin rpy="0 0 0" xyz="0 0 1"/>
   </joint>
-  <link name="virt_tool_frame_z"/>
+  <link name="virt_tool_frame_z">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
       <controlPeriod>0.001</controlPeriod>

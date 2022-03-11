@@ -5,7 +5,13 @@
 <!-- =================================================================================== -->
 <robot name="primitive_chargepal_with_gripper">
   <!-- start kinematic chain -->
-  <link name="world"/>
+  <link name="world">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <joint name="world_joint" type="fixed">
     <parent link="world"/>
     <child link="mobile_base_link"/>
@@ -477,6 +483,9 @@
   <gazebo reference="ee_link">
     <selfCollide>true</selfCollide>
   </gazebo>
+  <!--                                               -->
+  <!-- ////////// ChargePal common macros ////////// -->
+  <!--                                               -->
   <!-- mount the fts to the robot -->
   <joint name="fts_fix" type="fixed">
     <!--In most cases origin would be flange adapter plate: <origin xyz="0 0 0.009" rpy="0 0 0"/> /-->
@@ -516,14 +525,26 @@
     <parent link="fts_robotside"/>
     <child link="robotiq_force_torque_frame_id"/>
   </joint>
-  <link name="robotiq_force_torque_frame_id"/>
+  <link name="robotiq_force_torque_frame_id">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <!-- toolside frame -->
   <joint name="toolside_joint" type="fixed">
     <origin rpy="0 0 0" xyz="0 0 0.0375"/>
     <parent link="fts_robotside"/>
     <child link="fts_toolside"/>
   </joint>
-  <link name="fts_toolside"/>
+  <link name="fts_toolside">
+    <inertial>
+      <mass value="0.0"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+    </inertial>
+  </link>
   <!-- === 2x inner knuckle joint ================================================================================== -->
   <!-- === 2x finger tip joint (second movable joint in series) ===================================================== -->
   <!-- === 2x inner knuckle to inner finger joint ===================================================== -->
