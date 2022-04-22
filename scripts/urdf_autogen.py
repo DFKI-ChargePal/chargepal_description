@@ -10,8 +10,11 @@ TARGET_DIR = '_bullet_urdf_autogen'
 
 XACRO_FILE_LIST = [
     'environment/primitive_adapter_station.urdf.xacro',
+    'environment/adapter_station_square_socket.urdf.xacro',
+    'environment/adapter_station_octa_socket.urdf.xacro',
     'bringups/primitive_chargepal_with_gripper.urdf.xacro',
     'bringups/primitive_chargepal_with_fix_plug.urdf.xacro',
+    'bringups/primitive_chargepal_with_fix_rod.urdf.xacro',
 ]
 
 FIX_LINKS = True

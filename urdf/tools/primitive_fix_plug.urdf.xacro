@@ -14,7 +14,8 @@
   <xacro:property name="length_border" value="0.03" />
 
   <xacro:property name="mass_plug" value="0.25" />
-  <xacro:property name="radius_plug" value="0.0345" />
+  <xacro:property name="radius_plug" value="0.034" />
+  <!-- <xacro:property name="radius_plug" value="0.0345" /> -->
   <xacro:property name="length_plug" value="0.08" />
 
 

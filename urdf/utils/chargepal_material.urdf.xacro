@@ -17,6 +17,12 @@
     </material>
   </xacro:property>
 
+  <xacro:property name="material_field_green">
+    <material name="field_green">
+      <color rgba="${94/255} ${190/255} ${125/255} 1"/>
+    </material>
+  </xacro:property>
+
   <xacro:property name="material_pink">
     <material name="pink">
       <color rgba="0.937 0.109 0.882 1"/>

@@ -1,4 +1,4 @@
-<robot name="primitive_chargepal_with_fix_plug">
+<robot name="primitive_chargepal_with_fix_rod">
   
   
   
@@ -485,61 +485,38 @@
   
   
   
-  <joint name="plug_border_joint" type="fixed">
+  <joint name="rod_joint" type="fixed">
     <parent link="fts_toolside" />
-    <child link="plug_border" />
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.015" />
+    <child link="rod" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.035" />
   </joint>
-  <link name="plug_border">
-    <inertial>
-      <mass value="0.1" />
-      <origin rpy="0 0 0" xyz="0 0 0" />
-      <inertia ixx="5.812497675e-05" ixy="0.0" ixz="0.0" iyy="5.812497675e-05" iyz="0.0" izz="0.00010125" />
-    </inertial>
+  <link name="rod">
     <visual>
-      <material name="pink">
-        <color rgba="0.937 0.109 0.882 1" />
-      </material>
+      <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
-        <cylinder length="0.03" radius="0.045" />
+        <mesh filename="package://chargepal_tools/plugs/meshes/visual/rod.obj" scale="0.001 0.001 0.001" />
       </geometry>
+      <material name="field_green">
+        <color rgba="0.3686274509803922 0.7450980392156863 0.49019607843137253 1" />
+      </material>
     </visual>
     <collision>
-      <geometry>
-        <cylinder length="0.03" radius="0.045" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="plug_joint" type="fixed">
-    <parent link="plug_border" />
-    <child link="plug" />
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.055" />
-  </joint>
-  <link name="plug">
-    <inertial>
-      <mass value="0.25" />
       <origin rpy="0 0 0" xyz="0 0 0" />
-      <inertia ixx="0.00020558325110000005" ixy="0.0" ixz="0.0" iyy="0.00020558325110000005" iyz="0.0" izz="0.00014450000000000002" />
-    </inertial>
-    <visual>
-      <material name="pink">
-        <color rgba="0.937 0.109 0.882 1" />
-      </material>
       <geometry>
-        <cylinder length="0.08" radius="0.034" />
-      </geometry>
-    </visual>
-    <collision>
-      <geometry>
-        <cylinder length="0.08" radius="0.034" />
+        <mesh filename="package://chargepal_tools/plugs/meshes/collision/rod.obj" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
+    <inertial>
+      <mass value="0.2" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="9.697912787500001e-05" ixy="0.0" ixz="0.0" iyy="9.697912787500001e-05" iyz="0.0" izz="3.0625000000000006e-05" />
+    </inertial>
   </link>
   <joint name="plug_ref_frame_joint" type="fixed">
-    <parent link="plug_border" />
+    <parent link="rod" />
     <child link="plug_reference_frame" />
     <axis xyz="0 0 0" />
-    <origin rpy="0 0 0" xyz="0 0 0.015" />
+    <origin rpy="0 0 0" xyz="0 0 -0.015000000000000003" />
   </joint>
   <link name="plug_reference_frame">
     <inertial>
@@ -548,11 +525,8 @@
       <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
     </inertial>
   </link>
-  <gazebo reference="handle">
-    <material>Gazebo/ZincYellow</material>
-  </gazebo>
-  <gazebo reference="plug">
-    <material>Gazebo/ZincYellow</material>
+  <gazebo reference="rod">
+    <material>Gazebo/Blue</material>
   </gazebo>
   <joint name="virt_tool_frame_x_joint" type="fixed">
     <parent link="plug_reference_frame" />
