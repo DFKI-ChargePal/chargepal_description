@@ -32,7 +32,7 @@ ROBOT:
 - `ur10e_on_stand`: UR10e robot without tool mounted on a stand
 - `primitive_chargepal_with_gripper`: Simplified ChargePal robot with robotiq gripper
 - `primitive_chargepal_with_fix_plug`: Simplified ChargePal robot with fix tool
-- `primitive_chargepal_with_fix_plug`
+- `primitive_chargepal_with_fix_rod`
 
 ENV: 
 
