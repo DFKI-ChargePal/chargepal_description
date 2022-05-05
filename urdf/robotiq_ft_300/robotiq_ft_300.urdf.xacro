@@ -53,8 +53,8 @@
 
     <!-- toolside frame -->
     <joint name="${prefix}toolside_joint" type="fixed" >
-      <origin xyz="0 0 0.0375" rpy="0 0 0" />
-      <parent link="${prefix}fts_robotside" />
+      <origin xyz="0 0 0.02125" rpy="0 0 0" />
+      <parent link="${prefix}robotiq_force_torque_frame_id" />
       <child link="${prefix}fts_toolside" />
     </joint>
     <!-- <link name="${prefix}fts_toolside"/> -->

@@ -75,14 +75,16 @@
     <selfCollide>true</selfCollide>
   </gazebo>
 
+  <!-- ############### Bota Systems SensONE FT SENSOR-->
+  <xacro:include filename="$(find rokubimini_description)/urdf/BFT_SENS_ECAT_M8.urdf.xacro" />
 
-  <!-- ############## FT SENSOR ############### -->
-  <xacro:include filename="$(find chargepal_description)/urdf/robotiq_ft_300/robotiq_ft_300.urdf.xacro" />
-  
-  <xacro:robotiq_ft_300 parent="${prefix}tool0" prefix="${prefix}">
-    <origin xyz="0 0 0" rpy="0 0 0" />
-  </xacro:robotiq_ft_300>
+  <xacro:BFT_SENS_ECAT_M8 prefix="${prefix}ft_sensor" />
 
+  <joint name="ur_to_sensor" type="fixed">
+    <parent link="${prefix}tool0" />
+    <child link="${prefix}ft_sensor_mounting" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
   
   <!-- ############### GRIPPER ################ -->
   <xacro:include filename="$(find chargepal_description)/urdf/robotiq_2f_140/robotiq_arg2f_140_model_macro.xacro" />
@@ -94,8 +96,8 @@
   <xacro:property name="coupling_mass" value="0.100" />
 
   <joint name="${prefix}ft300_coupling_joint" type="fixed">
-    <origin xyz="0 0 ${coupling_inner_length / 2}" rpy="0 0 ${-pi/2}" />
-    <parent link="${prefix}fts_toolside" />
+    <origin xyz="0 0 ${coupling_outer_length / 2}" rpy="0 0 ${-pi/2}" />
+    <parent link="${prefix}ft_sensor_wrench" />
     <child link="${prefix}gripper_coupling_link" />
   </joint>
 
