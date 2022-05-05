@@ -23,28 +23,46 @@ git clone -b calibration_devel git@github.com:fmauch/universal_robot.git
 
 ## Test URDF model in RViz with fake joint state publisher
 
-The environment is configured through defining the environment variable `ROBOT`. Valid options are:
+The environment is configured through defining the environment variable `ROBOT` or `ENV`. Valid options are:
+
+ROBOT:
 
 - `ur5_on_stand`: UR5 robot without tool mounted on a stand
 - `ur10_on_stand`: UR10 robot without tool mounted on a stand
 - `ur10e_on_stand`: UR10e robot without tool mounted on a stand
 - `primitive_chargepal_with_gripper`: Simplified ChargePal robot with robotiq gripper
 - `primitive_chargepal_with_fix_plug`: Simplified ChargePal robot with fix tool
+- `primitive_chargepal_with_fix_rod`
+
+ENV: 
+
+- `primitive_adapter_station`
+- `adapter_station_square_socket`
+- `adapter_station_octa_socket`
+
+
 E.g., defining the environment variable to use the UR5:
 
 ```bash
 export ROBOT=ur5_on_stand
 ```
 
-Start the environment:
+#### Load the describtion file and start Rviz:
 
+To launch one robot
 ```bash
 roslaunch chargepal_description build_robot.launch
 ```
 
-To launch multiple robots execute:
+To launch multiple robots:
 ```bash
 roslaunch chargepal_description build_robots.launch
+```
+
+To launch environment components:
+```bash
+export ENV=adapter_station_octa_socket
+roslaunch chargepal_description build_env.launch
 ```
 
 *Don't forget to `source` your ROS and catkin workspace!*
