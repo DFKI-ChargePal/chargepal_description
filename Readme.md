@@ -19,6 +19,10 @@ cd <path/to/ros/workspace/src>
 # Clone repository:
 git clone -b calibration_devel git@github.com:fmauch/universal_robot.git
 # or with HTTPS: git clone -b calibration_devel https://github.com/fmauch/universal_robot.git
+
+# Clone force torque sensor ROS packages
+git clone https://gitlab.com/botasys/bota_driver.git
+# Also follow the instructions in this repository to install all dependencies
 ```
 
 ## Test URDF model in RViz with fake joint state publisher
