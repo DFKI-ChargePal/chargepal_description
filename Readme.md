@@ -70,3 +70,17 @@ roslaunch chargepal_description build_env.launch
 ```
 
 *Don't forget to `source` your ROS and catkin workspace!*
+
+## Create URDF files for PyBullet
+
+PyBullet can not read urdf files with macros (xacro-files) directly. Therefore, the xacro files needs to be converted by an hand. In addition, pybullet do not uses the ROS file structure. Path conflicts must also be handled by the user as shown in this [PyBullet project](https://git.ni.dfki.de/chargepal/manipulation/chargepal_pybullet).
+
+To convert a xacro file into a PyBullet readable urdf file, the script `pybullet_urdf_autogen.py` is provided. In this script variable `XACRO_FILE_LIST` defines a list of all xacro files that will be converted. New xacro files can be added at the end of the list.
+
+After adding the desired files the script can be executed with the command:
+
+```bash
+python scripts/pybullet_urdf_autogen.py
+```
+
+The generated files are placed in the folder `/_bullet_urdf_autogen`
