@@ -15,7 +15,10 @@ XACRO_FILE_LIST = [
     'environment/adapter_station_octa_socket.urdf.xacro',
     'bringups/primitive_chargepal_with_gripper.urdf.xacro',
     'bringups/primitive_chargepal_with_fix_plug.urdf.xacro',
-    'bringups/primitive_chargepal_with_fix_rod.urdf.xacro',
+    'bringups/cpm_fix_rod_30.urdf.xacro',
+    'bringups/cpm_fix_rod_32d5.urdf.xacro',
+    'bringups/cpm_fix_rod_34.urdf.xacro',
+    'bringups/cpm_fix_rod_34d5.urdf.xacro',
 ]
 
 FIX_LINKS = True

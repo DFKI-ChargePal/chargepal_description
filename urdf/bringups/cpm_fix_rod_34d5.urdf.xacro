@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="cpm_fix_rod_30">
+
+  <!-- resolve prefix variable (useful for multi robot) -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
+
+  <!-- Include rod tool xacro-->
+  <xacro:include filename="$(find chargepal_description)/urdf/bringups/cpm_fix_rod_macro.urdf.xacro" />
+
+  <xacro:generic_chargepal_model prefix="${prefix}" rod_diameter="34.5" />
+
+</robot>

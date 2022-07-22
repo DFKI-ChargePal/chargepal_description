@@ -1,0 +1,122 @@
+<robot name="adapter_station_square_socket">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="world"><inertial><mass value="0.0" /><origin rpy="0 0 0" xyz="0 0 0" /><inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" /></inertial></link>
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link="station_base_link" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.5762499999999999" />
+  </joint>
+  <link name="station_base_link">
+    <inertial>
+      <mass value="20.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="2.2304261911624996" ixy="0.0" ixz="0.0" iyy="2.2288011918124995" iyz="0.0" izz="0.03170832065" />
+    </inertial>
+    <visual>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.095 0.1 1.1524999999999999" />
+      </geometry>
+    </visual>
+    <collision>
+      <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+      <geometry>
+        <box size="0.095 0.1 1.1524999999999999" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="socket_joint" type="fixed">
+    <parent link="world" />
+    <child link="socket_link" />
+    <origin rpy="1.5707963267948966 0.0 0.0" xyz="0.0 0.0 1.2" />
+  </joint>
+  <link name="socket_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_tools/sockets/meshes/visual/square_hole.obj" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_tools/sockets/meshes/collision/square_hole.obj" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.003170832065" ixy="0.0" ixz="0.0" iyy="0.0030083321299999998" iyz="0.0" izz="0.003170832065" />
+    </inertial>
+  </link>
+  <joint name="target_ref_frame_joint" type="fixed">
+    <parent link="world" />
+    <child link="target_reference_frame" />
+    <axis xyz="0 0 0" />
+    <origin rpy="1.5707963267948966 0 3.141592653589793" xyz="0 -0.05 1.2" />
+  </joint>
+  <link name="target_reference_frame">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <joint name="virt_tgt_frame_x_joint" type="fixed">
+    <parent link="target_reference_frame" />
+    <child link="virt_tgt_frame_x" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="1 0 0" />
+  </joint>
+  <link name="virt_tgt_frame_x">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <joint name="virt_tgt_frame_y_joint" type="fixed">
+    <parent link="target_reference_frame" />
+    <child link="virt_tgt_frame_y" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="0 1 0" />
+  </joint>
+  <link name="virt_tgt_frame_y">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <joint name="virt_tgt_frame_z_joint" type="fixed">
+    <parent link="target_reference_frame" />
+    <child link="virt_tgt_frame_z" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="0 0 1" />
+  </joint>
+  <link name="virt_tgt_frame_z">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <gazebo reference="socket_station">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+</robot>
