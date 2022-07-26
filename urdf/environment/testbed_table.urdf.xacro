@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="testbed">
+
+  <!-- testbed with UR10e mounting plate -->
+
+  <!-- resolve prefix variable (useful for multi robot) -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
+
+  <!-- Macros -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_material.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_inertial.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_common.urdf.xacro" />
+
+  <!-- constants -->
+  <xacro:property name="M_PI" value="3.14159"/>
+
+  <!-- object properties -->
+  <xacro:property name="table_length" value="1.215" />
+  <xacro:property name="table_width" value="0.81" />
+  <xacro:property name="table_mesh_length" value="1.249" />
+  <xacro:property name="table_mesh_width" value="0.84398" />
+  <xacro:property name="table_mesh_height" value="0.81357" />
+
+  <xacro:property name="baseplate_size" value="0.225" />
+  <xacro:property name="baseplate_height" value="0.0225" />
+  <xacro:property name="profile_size" value="0.045" />
+
+  <!-- ################################################################### -->
+
+  <link name="world"/>
+  <joint name="${prefix}world_to_table" type="fixed">
+    <parent link="world"/>
+    <child link="${prefix}table"/>
+    <origin xyz="0 0 ${table_mesh_height/2}" rpy="0 0 ${M_PI/2}"/>
+  </joint>
+
+  <link name="${prefix}table">
+    <xacro:inertial_box x="${table_mesh_length}" y="${table_mesh_width}" z="${table_mesh_height}" mass="100.0">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:inertial_box>
+    <visual>
+      <origin xyz="${-table_mesh_length/2-0.006} ${-table_mesh_width/2-0.011} ${-table_mesh_height/2-0.0052}" rpy="${M_PI/2} 0.0 ${M_PI/2}" />
+      <geometry>
+        <mesh filename="package://chargepal_description/meshes/testbed/table.stl" />
+      </geometry>
+      <xacro:insert_block name="material_vention_green" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${table_mesh_length} ${table_mesh_width} ${table_mesh_height}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}table_to_baseplate" type="fixed">
+    <parent link="${prefix}table"/>
+    <child link="${prefix}base_plate"/>
+    <origin 
+      xyz="${table_length/2 - profile_size - baseplate_size/2} ${-table_width/2 + profile_size + baseplate_size/2} ${table_mesh_height/2 + baseplate_height/2}"
+      rpy="0 0 ${-M_PI/2}"/>
+  </joint>
+
+  <link name="${prefix}base_plate">
+    <xacro:inertial_box x="${baseplate_size}" y="${baseplate_size}" z="${baseplate_height}" mass="2.0">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+    </xacro:inertial_box>
+    <visual>
+      <origin xyz="${-baseplate_size/2} ${-baseplate_size/2} ${-baseplate_height/2}" rpy="${M_PI/2} 0.0 ${M_PI/2}" />
+      <geometry>
+        <mesh filename="package://chargepal_description/meshes/testbed/base_plate_ur10e.stl" />
+      </geometry>
+      <xacro:insert_block name="material_vention_blue" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <box size="${baseplate_size} ${baseplate_size} ${baseplate_height}" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="${prefix}baseplate_to_arm" type="fixed">
+    <parent link="${prefix}base_plate"/>
+    <child link="${prefix}arm_base"/>
+    <origin 
+      xyz="0 0 ${baseplate_height/2}"
+      rpy="0 0 0"/>
+  </joint>
+
+  <xacro:chargepal_virtual_link link_name="arm_base" />
+
+  <!-- gazebo will read this color -->
+  <gazebo reference="${prefix}base_plate">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="${prefix}table">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+</robot>

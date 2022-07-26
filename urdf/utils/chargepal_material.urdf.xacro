@@ -58,7 +58,19 @@
       <color rgba="0.1 0.1 0.1 1"/>
     </material>
   </xacro:property>
+
+  <xacro:property name="material_vention_green">
+    <material name="vention_green">
+      <color rgba="${12/255} ${129/255} ${138/255} 1"/>
+    </material>
+  </xacro:property>
   
+  <xacro:property name="material_vention_blue">
+    <material name="vention_blue">
+      <color rgba="${32/255} ${120/255} ${170/255} 1"/>
+    </material>
+  </xacro:property>
+
   <xacro:property name="material_aluminium">
     <material name="aluminium">
       <color rgba="0.8 0.8 0.8 1" />
