@@ -1,0 +1,94 @@
+<robot name="fix_rod_30">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="world"><inertial><mass value="0.0" /><origin rpy="0 0 0" xyz="0 0 0" /><inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" /></inertial></link>
+  <joint name="rod_joint" type="fixed">
+    <parent link="world" />
+    <child link="rod" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.035" />
+  </joint>
+  <link name="rod">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_tools/plugs/meshes/visual/Rod_30_Visual.obj" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="field_green">
+        <color rgba="0.3686274509803922 0.7450980392156863 0.49019607843137253 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_tools/plugs/meshes/collision/Rod_30_Collision.obj" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="9.697912787500001e-05" ixy="0.0" ixz="0.0" iyy="9.697912787500001e-05" iyz="0.0" izz="3.0625000000000006e-05" />
+    </inertial>
+  </link>
+  <joint name="plug_ref_frame_joint" type="fixed">
+    <parent link="rod" />
+    <child link="plug_reference_frame" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="0 0 -0.015000000000000003" />
+  </joint>
+  <link name="plug_reference_frame">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <gazebo reference="rod">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <joint name="virt_tool_frame_x_joint" type="fixed">
+    <parent link="plug_reference_frame" />
+    <child link="virt_tool_frame_x" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="1 0 0" />
+  </joint>
+  <link name="virt_tool_frame_x">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <joint name="virt_tool_frame_y_joint" type="fixed">
+    <parent link="plug_reference_frame" />
+    <child link="virt_tool_frame_y" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="0 1 0" />
+  </joint>
+  <link name="virt_tool_frame_y">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <joint name="virt_tool_frame_z_joint" type="fixed">
+    <parent link="plug_reference_frame" />
+    <child link="virt_tool_frame_z" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="0 0 1" />
+  </joint>
+  <link name="virt_tool_frame_z">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+</robot>
