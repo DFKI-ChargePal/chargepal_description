@@ -1,0 +1,54 @@
+<robot name="tdt_socket_model">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="root"><inertial><mass value="0.0" /><origin rpy="0 0 0" xyz="0 0 0" /><inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" /></inertial></link>
+  <joint name="root_to_socket_base" type="fixed">
+    <parent link="root" />
+    <child link="socket_base" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
+  </joint>
+  <link name="socket_base">
+    <inertial>
+      <mass value="1.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0007416663700000001" ixy="0.0" ixz="0.0" iyy="0.00140833277" iyz="0.0" izz="0.0017333326399999998" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_tools/sockets/meshes/visual/tdt_socket.obj" />
+      </geometry>
+      <material name="yellow">
+        <color rgba="1.0 0.8862745098039215 0.0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_tools/sockets/meshes/collision/tdt_socket.obj" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="socket_base_to_socket" type="fixed">
+    <parent link="socket_base" />
+    <child link="socket" />
+    <origin rpy="3.14159 0 0" xyz="0 0 0.05" />
+  </joint>
+  <link name="socket">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <gazebo reference="socket">
+    <material>Gazebo/ZincYellow</material>
+  </gazebo>
+</robot>

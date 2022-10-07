@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="tdt_socket_model">
+
+  <!-- constants -->
+  <xacro:property name="M_PI" value="3.14159"/>
+
+  <!-- Macros -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_material.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_inertial.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_common.urdf.xacro" />
+
+  <!-- resolve prefix variable (useful for multi robot) -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
+
+  <xacro:property name="socket_mass" value="1.0" />
+  <xacro:property name="socket_width" value="0.08" />
+  <xacro:property name="socket_length" value="0.12" />
+  <xacro:property name="socket_height" value="0.05" />
+
+  <link name="root" />
+
+  <joint name="root_to_socket_base" type="fixed">
+    <parent link="root"/>
+    <child link="socket_base"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+  </joint>
+
+  <link name="socket_base">
+    <xacro:inertial_box x="${socket_length}" y="${socket_width}" z="${socket_height}" mass="${socket_mass}">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:inertial_box>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_tools/sockets/meshes/visual/tdt_socket.obj" />
+      </geometry>
+      <xacro:insert_block name="material_yellow" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_tools/sockets/meshes/collision/tdt_socket.obj" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="socket_base_to_socket" type="fixed">
+    <parent link="socket_base"/>
+    <child link="socket"/>
+    <origin 
+      xyz="0 0 ${socket_height}"
+      rpy="${M_PI} 0 0"/>
+  </joint>
+
+  <xacro:chargepal_virtual_link link_name="socket" />
+  
+  <gazebo reference="socket">
+    <material>Gazebo/ZincYellow</material>
+  </gazebo>
+
+</robot>

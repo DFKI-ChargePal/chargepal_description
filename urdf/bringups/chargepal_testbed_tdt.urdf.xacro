@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="chargepal_testbed">
+
+  <!-- Macros -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_common.urdf.xacro" />
+
+  <!-- constants -->
+  <xacro:property name="M_PI" value="3.14159"/>
+
+  <!-- Resolve prefix variable (useful for multi robot) -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
+
+
+  <!-- ############### Table ################ -->
+  <xacro:include filename="$(find chargepal_description)/urdf/environment/testbed_table.urdf.xacro"/>
+
+  <!-- platform arm joint -->
+  <joint name="${prefix}testbed_to_ur10e" type="fixed">
+    <parent link="${prefix}arm_base" />
+    <child link="${prefix}base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${0.5*M_PI}" />
+  </joint>
+
+  <!-- ############### UR10e ARM ################ -->
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur10e_macro.xacro"/>
+  <!-- Arguments to load UR10e arm macro -->
+  <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/ur10e/joint_limits.yaml"/>
+  <xacro:arg name="physical_params" default="$(find ur_description)/config/ur10e/physical_parameters.yaml"/>
+  <xacro:arg name="kinematics_params" default="$(find ur_description)/config/ur10e/default_kinematics.yaml"/>
+  <xacro:arg name="visual_params" default="$(find ur_description)/config/ur10e/visual_parameters.yaml"/>
+  <!--
+    legal values:
+      - hardware_interface/PositionJointInterface
+      - hardware_interface/VelocityJointInterface
+      - hardware_interface/EffortJointInterface
+
+    NOTE: this value must correspond to the controller configured in the
+          controller .yaml files in the 'config' directory.
+  -->
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/VelocityJointInterface"/>  
+  <xacro:arg name="safety_limits" default="false"/>
+  <xacro:arg name="safety_pos_margin" default="0.15"/>
+  <xacro:arg name="safety_k_position" default="20"/>
+
+  <xacro:ur10e_robot
+    prefix="${prefix}"
+    joint_limits_parameters_file="$(arg joint_limit_params)"
+    kinematics_parameters_file="$(arg kinematics_params)"
+    physical_parameters_file="$(arg physical_params)"
+    visual_parameters_file="$(arg visual_params)"
+    transmission_hw_interface="$(arg transmission_hw_interface)"
+    safety_limits="$(arg safety_limits)"
+    safety_pos_margin="$(arg safety_pos_margin)"
+    safety_k_position="$(arg safety_k_position)"
+  />
+
+  <!-- Configure self collision properties per link -->
+  <gazebo reference="${prefix}shoulder_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="${prefix}upper_arm_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="${prefix}forearm_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="${prefix}wrist_1_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="${prefix}wrist_3_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="${prefix}wrist_2_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="${prefix}ee_link">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  
+  <!-- ############### Bota Systems SensONE FT SENSOR-->
+  <xacro:include filename="$(find rokubimini_description)/urdf/BFT_SENS_ECAT_M8.urdf.xacro" />
+
+  <xacro:BFT_SENS_ECAT_M8 prefix="${prefix}ft_sensor" />
+
+  <joint name="ur_to_sensor" type="fixed">
+    <parent link="${prefix}tool0" />
+    <child link="${prefix}ft_sensor_mounting" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <!-- ############### FIX ROD ################ -->
+  <xacro:include filename="$(find chargepal_description)/urdf/tools/tdt_plug.urdf.xacro" />
+
+  <xacro:tdt_plug parent="${prefix}ft_sensor_wrench" prefix="${prefix}" />
+
+  <!-- ################ GAZEBO ################ -->
+  <!-- Common -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/common.gazebo.xacro" />
+  <xacro:controller_plugin_gazebo robot_namespace=""/>
+
+</robot>

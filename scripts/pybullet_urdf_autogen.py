@@ -10,15 +10,19 @@ import xml_utils
 TARGET_DIR = '_bullet_urdf_models'
 
 XACRO_FILE_LIST = [
+    'tools/fix_rod_30.urdf.xacro',
+
+    'environment/tdt_socket.urdf.xacro',
+    'environment/testbed_table.urdf.xacro',
     'environment/primitive_adapter_station.urdf.xacro',
-    'environment/adapter_station_square_socket.urdf.xacro',
     'environment/adapter_station_octa_socket.urdf.xacro',
+    'environment/adapter_station_square_socket.urdf.xacro',
+
+    'bringups/ur10e.urdf.xacro',
+    'bringups/chargepal_testbed_tdt.urdf.xacro',
     'bringups/chargepal_testbed_fix_rod.urdf.xacro',
     'bringups/primitive_chargepal_with_gripper.urdf.xacro',
     'bringups/primitive_chargepal_with_fix_plug.urdf.xacro',
-    'bringups/ur10e.urdf.xacro',
-    'environment/testbed_table.urdf.xacro',
-    'tools/fix_rod_30.urdf.xacro',
 ]
 
 FIX_LINKS = True
