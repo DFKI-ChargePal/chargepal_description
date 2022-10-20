@@ -95,47 +95,6 @@
 
   <xacro:fix_plug parent="${prefix}ft_sensor_wrench" prefix="${prefix}" />
 
-  <!-- Add three (for each axis) additional virtual frames for reward calculation -->
-  <xacro:chargepal_virtual_joint
-    joint_name="${prefix}virt_tool_frame_x_joint" 
-    type="fixed"
-    parent="${prefix}plug_reference_frame"
-    child="${prefix}virt_tool_frame_x"
-    joint_axis_xyz="0 0 0"
-    joint_origin_xyz="1 0 0"
-    joint_origin_rpy="0 0 0"
-    joint_lower_limit="0"
-    joint_upper_limit="0"
-  />
-  <xacro:chargepal_virtual_link link_name="${prefix}virt_tool_frame_x" />
-
-  <xacro:chargepal_virtual_joint
-    joint_name="${prefix}virt_tool_frame_y_joint" 
-    type="fixed"
-    parent="${prefix}plug_reference_frame"
-    child="${prefix}virt_tool_frame_y"
-    joint_axis_xyz="0 0 0"
-    joint_origin_xyz="0 1 0"
-    joint_origin_rpy="0 0 0"
-    joint_lower_limit="0"
-    joint_upper_limit="0"
-  />
-  <xacro:chargepal_virtual_link link_name="${prefix}virt_tool_frame_y" />
-
-  <xacro:chargepal_virtual_joint
-    joint_name="${prefix}virt_tool_frame_z_joint" 
-    type="fixed"
-    parent="${prefix}plug_reference_frame"
-    child="${prefix}virt_tool_frame_z"
-    joint_axis_xyz="0 0 0"
-    joint_origin_xyz="0 0 1"
-    joint_origin_rpy="0 0 0"
-    joint_lower_limit="0"
-    joint_upper_limit="0"
-  />
-  <xacro:chargepal_virtual_link link_name="${prefix}virt_tool_frame_z" />
-
-
   <!-- ################ GAZEBO ################ -->
   <!-- Common -->
   <xacro:include filename="$(find chargepal_description)/urdf/utils/common.gazebo.xacro" />

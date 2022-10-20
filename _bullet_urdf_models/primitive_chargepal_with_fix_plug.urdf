@@ -581,45 +581,6 @@
   <gazebo reference="plug">
     <material>Gazebo/ZincYellow</material>
   </gazebo>
-  <joint name="virt_tool_frame_x_joint" type="fixed">
-    <parent link="plug_reference_frame" />
-    <child link="virt_tool_frame_x" />
-    <axis xyz="0 0 0" />
-    <origin rpy="0 0 0" xyz="1 0 0" />
-  </joint>
-  <link name="virt_tool_frame_x">
-    <inertial>
-      <mass value="0.0" />
-      <origin rpy="0 0 0" xyz="0 0 0" />
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
-    </inertial>
-  </link>
-  <joint name="virt_tool_frame_y_joint" type="fixed">
-    <parent link="plug_reference_frame" />
-    <child link="virt_tool_frame_y" />
-    <axis xyz="0 0 0" />
-    <origin rpy="0 0 0" xyz="0 1 0" />
-  </joint>
-  <link name="virt_tool_frame_y">
-    <inertial>
-      <mass value="0.0" />
-      <origin rpy="0 0 0" xyz="0 0 0" />
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
-    </inertial>
-  </link>
-  <joint name="virt_tool_frame_z_joint" type="fixed">
-    <parent link="plug_reference_frame" />
-    <child link="virt_tool_frame_z" />
-    <axis xyz="0 0 0" />
-    <origin rpy="0 0 0" xyz="0 0 1" />
-  </joint>
-  <link name="virt_tool_frame_z">
-    <inertial>
-      <mass value="0.0" />
-      <origin rpy="0 0 0" xyz="0 0 0" />
-      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
-    </inertial>
-  </link>
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
       <controlPeriod>0.001</controlPeriod>
