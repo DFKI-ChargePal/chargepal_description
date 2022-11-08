@@ -44,13 +44,13 @@
       </collision>
     </link>
     
-    <joint name="${prefix}plug_joint" type="fixed">
+    <joint name="${prefix}plug_rod_joint" type="fixed">
       <parent link="${prefix}plug_border"/>
-      <child link="${prefix}plug"/>
+      <child link="${prefix}plug_rod"/>
       <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 ${length_border/2.0+length_plug/2.0}"/>
     </joint>
     
-    <link name="${prefix}plug">
+    <link name="${prefix}plug_rod">
       <xacro:inertial_cylinder radius="${radius_plug}" length="${length_plug}" mass="${mass_plug}">
         <origin xyz="0 0 0" rpy="0 0 0"/>
       </xacro:inertial_cylinder>
@@ -69,22 +69,22 @@
     
     <!-- virtual reference frame -->
     <xacro:chargepal_virtual_joint 
-      joint_name="${prefix}plug_ref_frame_joint" 
+      joint_name="${prefix}plug_joint" 
       type="fixed"
       parent="${prefix}plug_border"
-      child="${prefix}plug_reference_frame"
+      child="${prefix}plug"
       joint_axis_xyz="0 0 0"
       joint_origin_xyz="0 0 ${length_border/2.0}"
       joint_origin_rpy="0 0 0"
       joint_lower_limit="0"
       joint_upper_limit="0"
     />
-    <xacro:chargepal_virtual_link link_name="${prefix}plug_reference_frame" />
+    <xacro:chargepal_virtual_link link_name="${prefix}plug" />
 
-    <gazebo reference="handle">
+    <gazebo reference="plug_border">
       <material>Gazebo/ZincYellow</material>
     </gazebo>
-    <gazebo reference="plug">
+    <gazebo reference="plug_rod">
       <material>Gazebo/ZincYellow</material>
     </gazebo>
 

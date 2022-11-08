@@ -537,12 +537,12 @@
       </geometry>
     </collision>
   </link>
-  <joint name="plug_joint" type="fixed">
+  <joint name="plug_rod_joint" type="fixed">
     <parent link="plug_border" />
-    <child link="plug" />
+    <child link="plug_rod" />
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.055" />
   </joint>
-  <link name="plug">
+  <link name="plug_rod">
     <inertial>
       <mass value="0.25" />
       <origin rpy="0 0 0" xyz="0 0 0" />
@@ -562,23 +562,23 @@
       </geometry>
     </collision>
   </link>
-  <joint name="plug_ref_frame_joint" type="fixed">
+  <joint name="plug_joint" type="fixed">
     <parent link="plug_border" />
-    <child link="plug_reference_frame" />
+    <child link="plug" />
     <axis xyz="0 0 0" />
     <origin rpy="0 0 0" xyz="0 0 0.015" />
   </joint>
-  <link name="plug_reference_frame">
+  <link name="plug">
     <inertial>
       <mass value="0.0" />
       <origin rpy="0 0 0" xyz="0 0 0" />
       <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
     </inertial>
   </link>
-  <gazebo reference="handle">
+  <gazebo reference="plug_border">
     <material>Gazebo/ZincYellow</material>
   </gazebo>
-  <gazebo reference="plug">
+  <gazebo reference="plug_rod">
     <material>Gazebo/ZincYellow</material>
   </gazebo>
   <gazebo>

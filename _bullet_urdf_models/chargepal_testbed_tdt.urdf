@@ -531,7 +531,7 @@
       <inertia ixx="0.00012002911865500001" ixy="0.0" ixz="0.0" iyy="0.00012002911865500001" iyz="0.0" izz="9.9225e-05" />
     </inertial>
   </link>
-  <joint name="plug_ref_frame_joint" type="fixed">
+  <joint name="plug_joint" type="fixed">
     <parent link="plug_root" />
     <child link="plug" />
     <axis xyz="0 0 0" />

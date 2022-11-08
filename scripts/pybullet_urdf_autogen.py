@@ -18,6 +18,12 @@ XACRO_FILE_LIST = [
     'environment/adapter_station_octa_socket.urdf.xacro',
     'environment/adapter_station_square_socket.urdf.xacro',
 
+
+    'bringups/cpm_fix_rod_30.urdf.xacro',
+    'bringups/cpm_fix_rod_32d5.urdf.xacro',
+    'bringups/cpm_fix_rod_34.urdf.xacro',
+    'bringups/cpm_fix_rod_34d5.urdf.xacro',
+
     'bringups/ur10e.urdf.xacro',
     'bringups/chargepal_testbed_tdt.urdf.xacro',
     'bringups/chargepal_testbed_fix_rod.urdf.xacro',

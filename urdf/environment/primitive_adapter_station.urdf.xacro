@@ -114,58 +114,17 @@
   <!-- ########## TARGET ############ -->
   <!-- virtual target reference frame -->
   <xacro:chargepal_virtual_joint 
-    joint_name="target_ref_frame_joint" 
+    joint_name="socket_joint" 
     type="fixed"
     parent="world"
-    child="target_reference_frame"
+    child="socket"
     joint_axis_xyz="0 0 0"
     joint_origin_xyz="0 ${-station_width/2} ${socket_height}"
     joint_origin_rpy="${pi/2} 0 ${pi}"
     joint_lower_limit="0"
     joint_upper_limit="0"
   />
-  <xacro:chargepal_virtual_link link_name="target_reference_frame" />
-
-  <!-- Add three (for each axis) additional virtual frames for reward calculation -->
-  <xacro:chargepal_virtual_joint
-    joint_name="virt_tgt_frame_x_joint" 
-    type="fixed"
-    parent="target_reference_frame"
-    child="virt_tgt_frame_x"
-    joint_axis_xyz="0 0 0"
-    joint_origin_xyz="1 0 0"
-    joint_origin_rpy="0 0 0"
-    joint_lower_limit="0"
-    joint_upper_limit="0"
-  />
-  <xacro:chargepal_virtual_link link_name="virt_tgt_frame_x" />
-
-  <xacro:chargepal_virtual_joint
-    joint_name="virt_tgt_frame_y_joint" 
-    type="fixed"
-    parent="target_reference_frame"
-    child="virt_tgt_frame_y"
-    joint_axis_xyz="0 0 0"
-    joint_origin_xyz="0 1 0"
-    joint_origin_rpy="0 0 0"
-    joint_lower_limit="0"
-    joint_upper_limit="0"
-  />
-  <xacro:chargepal_virtual_link link_name="virt_tgt_frame_y" />
-
-  <xacro:chargepal_virtual_joint
-    joint_name="virt_tgt_frame_z_joint" 
-    type="fixed"
-    parent="target_reference_frame"
-    child="virt_tgt_frame_z"
-    joint_axis_xyz="0 0 0"
-    joint_origin_xyz="0 0 1"
-    joint_origin_rpy="0 0 0"
-    joint_lower_limit="0"
-    joint_upper_limit="0"
-  />
-  <xacro:chargepal_virtual_link link_name="virt_tgt_frame_z" />
-
+  <xacro:chargepal_virtual_link link_name="socket" />
 
   <!-- colorize adapter station -->
   <gazebo reference="low_body_link">

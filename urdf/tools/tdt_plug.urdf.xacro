@@ -44,7 +44,7 @@
 
     <!-- virtual reference frame -->
     <xacro:chargepal_virtual_joint 
-      joint_name="${prefix}plug_ref_frame_joint" 
+      joint_name="${prefix}plug_joint" 
       type="fixed"
       parent="${prefix}plug_root"
       child="${prefix}plug"
