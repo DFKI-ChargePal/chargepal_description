@@ -14,6 +14,7 @@
   <xacro:property name="plug_radius" value="0.0315" />
   <xacro:property name="plug_length" value="0.065" />
   <xacro:property name="plug_border_length" value="0.020" />
+  <xacro:property name="mesh_scale" value="0.95" />
 
   <xacro:macro name="tdt_plug" params="parent prefix">
 
@@ -27,14 +28,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://chargepal_tools/plugs/meshes/visual/tdt_plug_visual.obj"/>
+          <mesh filename="package://chargepal_tools/plugs/meshes/visual/tdt_plug_visual.obj" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}"/>
         </geometry>
         <xacro:insert_block name="material_field_green" />
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://chargepal_tools/plugs/meshes/collision/tdt_plug_collision.obj"/>
+          <mesh filename="package://chargepal_tools/plugs/meshes/collision/tdt_plug_collision.obj" scale="${mesh_scale} ${mesh_scale} ${mesh_scale}"/>
         </geometry>
       </collision>
       <xacro:inertial_cylinder radius="${plug_radius}" length="${plug_length}" mass="${plug_mass}">
