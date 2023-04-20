@@ -1,0 +1,87 @@
+<robot name="testbed">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <link name="world"><inertial><mass value="0.0" /><origin rpy="0 0 0" xyz="0 0 0" /><inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" /></inertial></link>
+  <joint name="world_to_table" type="fixed">
+    <parent link="world" />
+    <child link="table" />
+    <origin rpy="0 0 3.14159" xyz="0 0 0" />
+  </joint>
+  <link name="table">
+    <inertial>
+      <mass value="100.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="17.8180758727668" ixy="0.0" ixz="0.0" iyy="10.983703606516801" iyz="0.0" izz="17.769367892250003" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_description/meshes/testbed/table.dae" />
+      </geometry>
+      <material name="vention_green">
+        <color rgba="0.047058823529411764 0.5058823529411764 0.5411764705882353 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="-0.405 -0.6075 -0.4068" />
+      <geometry>
+        <box size="0.81 1.215 0.8136" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="table_to_baseplate" type="fixed">
+    <parent link="table" />
+    <child link="base_plate" />
+    <origin rpy="0 0 3.14159" xyz="-0.6975 -0.1575 0" />
+  </joint>
+  <link name="base_plate">
+    <inertial>
+      <mass value="2.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.00852187159125" ixy="0.0" ixz="0.0" iyy="0.00852187159125" iyz="0.0" izz="0.01687499325" />
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="package://chargepal_description/meshes/testbed/base_plate_ur10e.dae" />
+      </geometry>
+      <material name="vention_blue">
+        <color rgba="0.12549019607843137 0.47058823529411764 0.6666666666666666 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.01125" />
+      <geometry>
+        <box size="0.225 0.225 0.0225" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="baseplate_to_arm" type="fixed">
+    <parent link="base_plate" />
+    <child link="arm_base" />
+    <origin rpy="0 0 0" xyz="0 0 0.0225" />
+  </joint>
+  <link name="arm_base">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  
+  <gazebo reference="base_plate">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="table">
+    <material>Gazebo/Green</material>
+  </gazebo>
+</robot>

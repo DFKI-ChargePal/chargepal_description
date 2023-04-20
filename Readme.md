@@ -36,7 +36,9 @@ ROBOT:
 - `ur10e_on_stand`: UR10e robot without tool mounted on a stand
 - `primitive_chargepal_with_gripper`: Simplified ChargePal robot with robotiq gripper
 - `primitive_chargepal_with_fix_plug`: Simplified ChargePal robot with fix tool
-- `primitive_chargepal_with_fix_rod`
+- `primitive_chargepal_with_fix_rod`: Simplified ChargePal robot with fix rod
+- 'chargepal_testbed_tdt': UR10e on table with top-down insertion task
+- 'chargepal_testbed_cic': UR10e on table with CIC configuration
 
 ENV: 
 

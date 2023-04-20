@@ -14,6 +14,7 @@ XACRO_FILE_LIST = [
 
     'environment/tdt_socket.urdf.xacro',
     'environment/testbed_table.urdf.xacro',
+    'environment/testbed_table_cic.urdf.xacro',
     'environment/primitive_adapter_station.urdf.xacro',
     'environment/adapter_station_octa_socket.urdf.xacro',
     'environment/adapter_station_square_socket.urdf.xacro',
@@ -26,6 +27,7 @@ XACRO_FILE_LIST = [
 
     'bringups/ur10e.urdf.xacro',
     'bringups/chargepal_testbed_tdt.urdf.xacro',
+    'bringups/chargepal_testbed_cic.urdf.xacro',
     'bringups/chargepal_testbed_fix_rod.urdf.xacro',
     'bringups/primitive_chargepal_with_gripper.urdf.xacro',
     'bringups/primitive_chargepal_with_fix_plug.urdf.xacro',
