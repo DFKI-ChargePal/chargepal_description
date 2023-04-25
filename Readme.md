@@ -34,14 +34,16 @@ ROBOT:
 - `ur5_on_stand`: UR5 robot without tool mounted on a stand
 - `ur10_on_stand`: UR10 robot without tool mounted on a stand
 - `ur10e_on_stand`: UR10e robot without tool mounted on a stand
+- `ur10e_fix_plug`: UR10e robot with mounted ft-sensor and a fixed plug
 - `primitive_chargepal_with_gripper`: Simplified ChargePal robot with robotiq gripper
 - `primitive_chargepal_with_fix_plug`: Simplified ChargePal robot with fix tool
-- `primitive_chargepal_with_fix_rod`: Simplified ChargePal robot with fix rod
 - `chargepal_testbed_tdt`: UR10e on table with top-down insertion task
 - `chargepal_testbed_cic`: UR10e on table with CIC configuration
 
 ENV: 
 
+- `testbed_table`: Testbed table with old mounting points
+- `testbed_table_cic`: Testbed table with mounting points as in the CIC building
 - `primitive_adapter_station`
 - `adapter_station_square_socket`
 - `adapter_station_octa_socket`
