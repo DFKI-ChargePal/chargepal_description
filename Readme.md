@@ -30,7 +30,6 @@ git clone https://gitlab.com/botasys/bota_driver.git
 The environment is configured through defining the environment variable `ROBOT` or `ENV`. Valid options are:
 
 ROBOT:
-
 - `ur5_on_stand`: UR5 robot without tool mounted on a stand
 - `ur10_on_stand`: UR10 robot without tool mounted on a stand
 - `ur10e_on_stand`: UR10e robot without tool mounted on a stand
@@ -40,8 +39,7 @@ ROBOT:
 - `chargepal_testbed_tdt`: UR10e on table with top-down insertion task
 - `chargepal_testbed_cic`: UR10e on table with CIC configuration
 
-ENV: 
-
+ENV:
 - `testbed_table`: Testbed table with old mounting points
 - `testbed_table_cic`: Testbed table with mounting points as in the CIC building
 - `primitive_adapter_station`
