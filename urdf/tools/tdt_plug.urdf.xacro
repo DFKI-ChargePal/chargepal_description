@@ -14,7 +14,7 @@
   <xacro:property name="plug_radius" value="0.0315" />
   <xacro:property name="plug_length" value="0.065" />
   <xacro:property name="plug_border_length" value="0.020" />
-  <xacro:property name="mesh_scale" value="0.95" />
+  <xacro:property name="mesh_scale" value="0.99" />
 
   <xacro:macro name="tdt_plug" params="parent prefix">
 

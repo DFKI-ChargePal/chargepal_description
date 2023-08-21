@@ -428,7 +428,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://chargepal_tools/plugs/meshes/visual/tdt_plug_visual.obj" scale="0.95 0.95 0.95" />
+        <mesh filename="package://chargepal_tools/plugs/meshes/visual/tdt_plug_visual.obj" scale="0.99 0.99 0.99" />
       </geometry>
       <material name="field_green">
         <color rgba="0.3686274509803922 0.7450980392156863 0.49019607843137253 1" />
@@ -437,7 +437,7 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
-        <mesh filename="package://chargepal_tools/plugs/meshes/collision/tdt_plug_collision.obj" scale="0.95 0.95 0.95" />
+        <mesh filename="package://chargepal_tools/plugs/meshes/collision/tdt_plug_collision.obj" scale="0.99 0.99 0.99" />
       </geometry>
     </collision>
     <inertial>
