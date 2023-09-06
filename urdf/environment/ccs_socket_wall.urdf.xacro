@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="adapter_station_square_socket">
+
+  <!-- resolve prefix variable (useful for multi robot) -->
+  <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
+
+  <!-- Include socket xacro-->
+  <xacro:include filename="$(find chargepal_tools)/urdf/ccs_socket.urdf.xacro" />
+
+  <xacro:socket_station prefix="${prefix}"/>
+
+</robot>
