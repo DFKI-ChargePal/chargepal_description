@@ -28,9 +28,9 @@ XACRO_FILE_LIST = [
 
     'bringups/ur10e.urdf.xacro',
     'bringups/ur10e_fix_plug.urdf.xacro',
+    'bringups/ur10e_ccs_type2.urdf.xacro',
     'bringups/chargepal_testbed_tdt.urdf.xacro',
     'bringups/chargepal_testbed_cic.urdf.xacro',
-    'bringups/chargepal_testbed_cic_type2.urdf.xacro',
     'bringups/primitive_chargepal_with_gripper.urdf.xacro',
     'bringups/primitive_chargepal_with_fix_plug.urdf.xacro',
 ]
