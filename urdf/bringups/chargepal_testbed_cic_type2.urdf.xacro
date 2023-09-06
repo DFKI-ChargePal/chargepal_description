@@ -89,7 +89,7 @@
   </joint>
 
   <!-- ############### FIX ROD ################ -->
-  <xacro:include filename="$(find chargepal_tools/urdf/ccs_type2_plug.urdf.xacro)" />
+  <xacro:include filename="$(find chargepal_tools)/urdf/ccs_type2_plug.urdf.xacro" />
 
   <xacro:ccs_type2_tool parent="${prefix}ft_sensor_wrench" prefix="${prefix}" collision_scale="1.0" />
 

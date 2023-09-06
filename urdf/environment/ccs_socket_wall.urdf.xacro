@@ -7,6 +7,6 @@
   <!-- Include socket xacro-->
   <xacro:include filename="$(find chargepal_tools)/urdf/ccs_socket.urdf.xacro" />
 
-  <xacro:socket_station prefix="${prefix}"/>
+  <xacro:ccs_socket prefix="${prefix}"/>
 
 </robot>
