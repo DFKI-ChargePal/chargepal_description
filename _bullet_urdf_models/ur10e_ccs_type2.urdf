@@ -443,7 +443,7 @@
     <collision>
       <origin rpy="1.5707963267948966 0 1.5707963267948966" xyz="0 0 0.085" />
       <geometry>
-        <mesh filename="package://chargepal_tools/plugs/meshes/collision/ccs_type2_tip.obj" scale="0.935 1.0 0.935" />
+        <mesh filename="package://chargepal_tools/plugs/meshes/collision/ccs_type2_tip.obj" scale="0.92 1.0 0.92" />
       </geometry>
     </collision>
     <inertial>

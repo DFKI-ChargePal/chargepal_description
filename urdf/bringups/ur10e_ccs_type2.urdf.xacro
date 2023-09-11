@@ -88,7 +88,7 @@
   <!-- ############### FIX CCS TYPE 2 PLUG ################ -->
   <xacro:include filename="$(find chargepal_tools)/urdf/ccs_type2_plug.urdf.xacro" />
   <!-- collision scale upper limit 0.94 -->
-  <xacro:ccs_type2_tool parent="${prefix}ft_sensor_wrench" prefix="${prefix}" collision_scale="0.935" />
+  <xacro:ccs_type2_tool parent="${prefix}ft_sensor_wrench" prefix="${prefix}" collision_scale="0.92" />
 
   <!-- ################ GAZEBO ################ -->
   <!-- Common -->
