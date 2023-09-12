@@ -539,13 +539,39 @@
       <inertia ixx="9.697912787500001e-05" ixy="0.0" ixz="0.0" iyy="9.697912787500001e-05" iyz="0.0" izz="3.0625000000000006e-05" />
     </inertial>
   </link>
-  <joint name="plug_joint" type="fixed">
+  <joint name="plug_mounting_joint" type="fixed">
     <parent link="rod" />
-    <child link="plug" />
+    <child link="plug_mounting" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="0 0 -0.035" />
+  </joint>
+  <link name="plug_mounting">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <joint name="plug_lip_joint" type="fixed">
+    <parent link="rod" />
+    <child link="plug_lip" />
     <axis xyz="0 0 0" />
     <origin rpy="0 0 0" xyz="0 0 -0.015000000000000003" />
   </joint>
-  <link name="plug">
+  <link name="plug_lip">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <joint name="plug_tip_joint" type="fixed">
+    <parent link="rod" />
+    <child link="plug_tip" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="0 0 0.035" />
+  </joint>
+  <link name="plug_tip">
     <inertial>
       <mass value="0.0" />
       <origin rpy="0 0 0" xyz="0 0 0" />

@@ -512,74 +512,62 @@
   
   
   
-  <joint name="plug_border_joint" type="fixed">
+  
+  <joint name="plug_mounting_joint" type="fixed">
     <parent link="ft_sensor_wrench" />
-    <child link="plug_border" />
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.015" />
+    <child link="plug_mounting" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
   </joint>
-  <link name="plug_border">
-    <inertial>
-      <mass value="0.1" />
-      <origin rpy="0 0 0" xyz="0 0 0" />
-      <inertia ixx="5.812497675e-05" ixy="0.0" ixz="0.0" iyy="5.812497675e-05" iyz="0.0" izz="0.00010125" />
-    </inertial>
+  <link name="plug_mounting">
     <visual>
-      <material name="pink">
-        <color rgba="0.937 0.109 0.882 1" />
-      </material>
+      <origin rpy="0 0 0" xyz="0 0 0" />
       <geometry>
-        <cylinder length="0.03" radius="0.045" />
+        <mesh filename="package://chargepal_tools/plugs/meshes/visual/tdt_plug_visual.obj" scale="0.98 0.98 1.0" />
       </geometry>
+      <material name="field_green">
+        <color rgba="0.3686274509803922 0.7450980392156863 0.49019607843137253 1" />
+      </material>
     </visual>
     <collision>
-      <geometry>
-        <cylinder length="0.03" radius="0.045" />
-      </geometry>
-    </collision>
-  </link>
-  <joint name="plug_rod_joint" type="fixed">
-    <parent link="plug_border" />
-    <child link="plug_rod" />
-    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.055" />
-  </joint>
-  <link name="plug_rod">
-    <inertial>
-      <mass value="0.25" />
       <origin rpy="0 0 0" xyz="0 0 0" />
-      <inertia ixx="0.00020558325110000005" ixy="0.0" ixz="0.0" iyy="0.00020558325110000005" iyz="0.0" izz="0.00014450000000000002" />
-    </inertial>
-    <visual>
-      <material name="pink">
-        <color rgba="0.937 0.109 0.882 1" />
-      </material>
       <geometry>
-        <cylinder length="0.08" radius="0.034" />
-      </geometry>
-    </visual>
-    <collision>
-      <geometry>
-        <cylinder length="0.08" radius="0.034" />
+        <mesh filename="package://chargepal_tools/plugs/meshes/collision/tdt_plug_collision.obj" scale="0.98 0.98 1.0" />
       </geometry>
     </collision>
+    <inertial>
+      <mass value="0.2" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.00012002911865500001" ixy="0.0" ixz="0.0" iyy="0.00012002911865500001" iyz="0.0" izz="9.9225e-05" />
+    </inertial>
   </link>
-  <joint name="plug_joint" type="fixed">
-    <parent link="plug_border" />
-    <child link="plug" />
+  <joint name="plug_lip_joint" type="fixed">
+    <parent link="plug_mounting" />
+    <child link="plug_lip" />
     <axis xyz="0 0 0" />
-    <origin rpy="0 0 0" xyz="0 0 0.015" />
+    <origin rpy="0 0 0" xyz="0 0 0.02" />
   </joint>
-  <link name="plug">
+  <link name="plug_lip">
     <inertial>
       <mass value="0.0" />
       <origin rpy="0 0 0" xyz="0 0 0" />
       <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
     </inertial>
   </link>
-  <gazebo reference="plug_border">
-    <material>Gazebo/ZincYellow</material>
-  </gazebo>
-  <gazebo reference="plug_rod">
-    <material>Gazebo/ZincYellow</material>
+  <joint name="plug_tip_joint" type="fixed">
+    <parent link="plug_mounting" />
+    <child link="plug_tip" />
+    <axis xyz="0 0 0" />
+    <origin rpy="0 0 0" xyz="0 0 0.065" />
+  </joint>
+  <link name="plug_tip">
+    <inertial>
+      <mass value="0.0" />
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+    </inertial>
+  </link>
+  <gazebo reference="plug_mounting">
+    <material>Gazebo/Blue</material>
   </gazebo>
   <gazebo>
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">

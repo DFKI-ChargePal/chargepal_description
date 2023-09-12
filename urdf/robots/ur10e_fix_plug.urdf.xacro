@@ -86,9 +86,8 @@
   </joint>
 
   <!-- ############### FIX ROD ################ -->
-  <xacro:include filename="$(find chargepal_description)/urdf/tools/tdt_plug.urdf.xacro" />
-
-  <xacro:tdt_plug parent="${prefix}ft_sensor_wrench" prefix="${prefix}" />
+  <xacro:include filename="$(find chargepal_tools)/urdf/tdt_plug.urdf.xacro" />
+  <xacro:tdt_plug parent="${prefix}ft_sensor_wrench" prefix="${prefix}" mesh_scale="0.98"/>
 
   <!-- ################ GAZEBO ################ -->
   <!-- Common -->

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="chargepal_testbed">
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="primitive_chargepal_with_fix_plug">
 
   <!-- Macros -->
   <xacro:include filename="$(find chargepal_description)/urdf/utils/chargepal_common.urdf.xacro" />
@@ -11,20 +11,21 @@
   <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
 
 
-  <!-- ############### Table ################ -->
-  <xacro:include filename="$(find chargepal_description)/urdf/environment/testbed_table_cic.urdf.xacro"/>
+  <!-- ############### PLATFORM ################ -->
+  <xacro:include filename="$(find chargepal_description)/urdf/mobile_platform/primitive_mobile_platform.urdf.xacro"/>
 
   <!-- platform arm joint -->
-  <joint name="${prefix}testbed_to_ur10e" type="fixed">
-    <parent link="${prefix}arm_base" />
+  <joint name="${prefix}platform_ur10e_joint" type="fixed">
+    <parent link="${prefix}tower_link" />
     <child link="${prefix}base_link" />
-    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${-0.5*M_PI}" />
+    <origin xyz="0.0 0.0 ${tower_height/2}" rpy="0.0 0.0 ${0.5*M_PI}" />
   </joint>
+
 
   <!-- ############### UR10e ARM ################ -->
   <xacro:include filename="$(find ur_description)/urdf/inc/ur10e_macro.xacro"/>
   <!-- Arguments to load UR10e arm macro -->
-  <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/ur10e/joint_limits.yaml"/>
+  <xacro:arg name="joint_limit_params" default="$(find chargepal_description)/config/ur10e/joint_limits.yaml"/>
   <xacro:arg name="physical_params" default="$(find ur_description)/config/ur10e/physical_parameters.yaml"/>
   <xacro:arg name="kinematics_params" default="$(find ur_description)/config/ur10e/default_kinematics.yaml"/>
   <xacro:arg name="visual_params" default="$(find ur_description)/config/ur10e/visual_parameters.yaml"/>
@@ -77,6 +78,7 @@
     <selfCollide>true</selfCollide>
   </gazebo>
   
+
   <!-- ############### Bota Systems SensONE FT SENSOR-->
   <xacro:include filename="$(find rokubimini_description)/urdf/BFT_SENS_ECAT_M8.urdf.xacro" />
 
@@ -88,10 +90,9 @@
     <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
   </joint>
 
-  <!-- ############### FIX ROD ################ -->
-  <xacro:include filename="$(find chargepal_description)/urdf/tools/tdt_plug.urdf.xacro" />
-
-  <xacro:tdt_plug parent="${prefix}ft_sensor_wrench" prefix="${prefix}" />
+  <!-- ############### FIX PLUG ################ -->
+  <xacro:include filename="$(find chargepal_tools)/urdf/tdt_plug.urdf.xacro" />
+  <xacro:tdt_plug parent="${prefix}ft_sensor_wrench" prefix="${prefix}" mesh_scale="0.98"/>
 
   <!-- ################ GAZEBO ################ -->
   <!-- Common -->

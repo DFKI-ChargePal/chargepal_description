@@ -5,7 +5,7 @@
   <xacro:include filename="$(find chargepal_description)/urdf/utils/prefix.urdf.xacro" />
 
   <!-- Include rod tool xacro-->
-  <xacro:include filename="$(find chargepal_description)/urdf/bringups/cpm_fix_rod_macro.urdf.xacro" />
+  <xacro:include filename="$(find chargepal_description)/urdf/robots/cpm_fix_rod_macro.urdf.xacro" />
 
   <xacro:generic_chargepal_model prefix="${prefix}" rod_diameter="30" />
 

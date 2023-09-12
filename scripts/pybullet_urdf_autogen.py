@@ -10,8 +10,6 @@ import xml_utils
 TARGET_DIR = '_bullet_urdf_models'
 
 XACRO_FILE_LIST = [
-    'tools/fix_rod_30.urdf.xacro',
-
     'environment/tdt_socket.urdf.xacro',
     'environment/testbed_table.urdf.xacro',
     'environment/ccs_socket_wall.urdf.xacro',
@@ -21,18 +19,16 @@ XACRO_FILE_LIST = [
     'environment/adapter_station_square_socket.urdf.xacro',
 
 
-    'bringups/cpm_fix_rod_30.urdf.xacro',
-    'bringups/cpm_fix_rod_32d5.urdf.xacro',
-    'bringups/cpm_fix_rod_34.urdf.xacro',
-    'bringups/cpm_fix_rod_34d5.urdf.xacro',
+    'robots/cpm_fix_rod_30.urdf.xacro',
+    'robots/cpm_fix_rod_32d5.urdf.xacro',
+    'robots/cpm_fix_rod_34.urdf.xacro',
+    'robots/cpm_fix_rod_34d5.urdf.xacro',
 
-    'bringups/ur10e.urdf.xacro',
-    'bringups/ur10e_fix_plug.urdf.xacro',
-    'bringups/ur10e_ccs_type2.urdf.xacro',
-    'bringups/chargepal_testbed_tdt.urdf.xacro',
-    'bringups/chargepal_testbed_cic.urdf.xacro',
-    'bringups/primitive_chargepal_with_gripper.urdf.xacro',
-    'bringups/primitive_chargepal_with_fix_plug.urdf.xacro',
+    'robots/ur10e.urdf.xacro',
+    'robots/ur10e_fix_plug.urdf.xacro',
+    'robots/ur10e_ccs_type2.urdf.xacro',
+    'robots/primitive_chargepal_with_gripper.urdf.xacro',
+    'robots/primitive_chargepal_with_fix_plug.urdf.xacro',
 ]
 
 FIX_LINKS = True
