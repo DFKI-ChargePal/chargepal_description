@@ -21,8 +21,8 @@
       <geometry>
         <mesh filename="package://chargepal_tools/sockets/meshes/visual/ccs_socket.obj" scale="1.0 1.0 1.0" />
       </geometry>
-      <material name="black">
-        <color rgba="0.1 0.1 0.1 1" />
+      <material name="dark_grey">
+        <color rgba="0.3 0.3 0.3 1" />
       </material>
     </visual>
     <collision>
@@ -49,8 +49,8 @@
       <inertia ixx="0.015446160488199998" ixy="0.0" ixz="0.0" iyy="0.045194065255699994" iyz="0.0" izz="0.030252071232499997" />
     </inertial>
     <visual>
-      <material name="black">
-        <color rgba="0.1 0.1 0.1 1" />
+      <material name="dark_grey">
+        <color rgba="0.3 0.3 0.3 1" />
       </material>
       <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
@@ -76,8 +76,8 @@
       <inertia ixx="0.0012421661697999999" ixy="0.0" ixz="0.0" iyy="0.00678708582683125" iyz="0.0" izz="0.006049086122031249" />
     </inertial>
     <visual>
-      <material name="black">
-        <color rgba="0.1 0.1 0.1 1" />
+      <material name="dark_grey">
+        <color rgba="0.3 0.3 0.3 1" />
       </material>
       <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
@@ -103,8 +103,8 @@
       <inertia ixx="0.0012421661697999999" ixy="0.0" ixz="0.0" iyy="0.00678708582683125" iyz="0.0" izz="0.006049086122031249" />
     </inertial>
     <visual>
-      <material name="black">
-        <color rgba="0.1 0.1 0.1 1" />
+      <material name="dark_grey">
+        <color rgba="0.3 0.3 0.3 1" />
       </material>
       <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
@@ -130,8 +130,8 @@
       <inertia ixx="0.0060600809093000006" ixy="0.0" ixz="0.0" iyy="0.0358079856768" iyz="0.0" izz="0.030252071232499997" />
     </inertial>
     <visual>
-      <material name="black">
-        <color rgba="0.1 0.1 0.1 1" />
+      <material name="dark_grey">
+        <color rgba="0.3 0.3 0.3 1" />
       </material>
       <orign rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0" />
       <geometry>
